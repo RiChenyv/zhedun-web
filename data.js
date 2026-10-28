@@ -56,6 +56,6 @@ const rows=[
  ['现煎牛排大份饭','s8',47,40,'steak','鲜香','约 750g · 现煎大份','慢慢等也值得','牛排接单后现煎，制作时间更长；时间充裕时提前预约，按约定时段领取。',null,4.9],
  ['元气咖喱鸡肉饭','s7',24,22,'curry','清淡','约 550g · 蔬菜杂粮','温和咖喱','温和咖喱搭配鸡肉、土豆和时令蔬菜，少油少盐备注可选，酱汁分装。',null,4.7]
 ];
-export const meals=rows.map((r,i)=>({id:'m'+(i+1),name:r[0],shopId:r[1],price:r[2],prep:r[3],image:i>=9&&i<=11?'breakfast':i>=18&&i<=20?'light':r[4],taste:r[5],portion:r[6],tag:r[7],desc:r[8],rating:r[10]??[4.8,4.7,4.9,4.9,4.8,4.6][i%6],sold:i===8,modes:r[9]||(shops.find(s=>s.id===r[1]).type==='canteen'?['dine','pickup','cabinet','delivery']:['pickup','delivery']),fresh:i>=12,newArrival:i>=24,photosNote:'同类餐食示意图'}));
+export const meals=rows.map((r,i)=>({id:'m'+(i+1),name:r[0],category:i>=9&&i<=11?'breakfast':i>=18&&i<=20?'light':r[4],mealPeriods:i>=9&&i<=11?['breakfast','late']:['lunch','dinner','late'],shopId:r[1],price:r[2],prep:r[3],image:i>=9&&i<=11?'breakfast':i>=18&&i<=20?'light':r[4],taste:r[5],portion:r[6],tag:r[7],desc:r[8],rating:r[10]??[4.8,4.7,4.9,4.9,4.8,4.6][i%6],sold:i===8,modes:r[9]||(shops.find(s=>s.id===r[1]).type==='canteen'?['dine','pickup','cabinet','delivery']:['pickup','delivery']),fresh:i>=12,newArrival:i>=24,photosNote:'同类餐食示意图'}));
 export const getMeal=id=>meals.find(m=>m.id===id);
 export const getShop=id=>shops.find(s=>s.id===id);
